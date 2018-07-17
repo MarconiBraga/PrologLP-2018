@@ -276,9 +276,7 @@ contem(motorcycle, edson).
 contem(motorcycle, renato).
 contem(motorcycle, tiago).
 
-% REGRA: interesses dos amigos - Dado o usuário C, quando C é amigo
-% de E, C gosta de D e E gosta de D então diz-se que C e E são amigos e
-% tem o mesmo interesse.
+% REGRA: Consulta que retorne todos os interesses dos amigos de um determinado usuário.
 interesses_amigos(C,Y) :-
     amigos(C,X),gosta(X, Y).
 
