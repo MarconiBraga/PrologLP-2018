@@ -32,4 +32,4 @@
 1. os interesses dos amigos daquela pessoa que ela ainda não possui OU
 2. os interesses das pessoas que pertencem aos mesmos grupos daquela pessoa e que ela ainda não possui.
 
-* Resposta Questão2 [Link](https://github.com/MarconiBraga/PrologLP-2018/blob/master/Trabalho/questao2.pl)
+* [Resposta Questão2](https://github.com/MarconiBraga/PrologLP-2018/blob/master/Trabalho/questao2.pl)
