@@ -8,3 +8,7 @@ Trabalho de prolog da matéria Linguagens de Programação 2018/01.
 
 ## Descrição do Trabalho
 - [Trabalho Prolog](https://github.com/MarconiBraga/PrologLP-2018/tree/master/Trabalho)
+
+## Compilador Utilizado
+- [SWI-Prolog](http://www.swi-prolog.org/)
+- [SWI-Prolog Online](https://swish.swi-prolog.org/)
