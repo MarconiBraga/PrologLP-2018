@@ -1,4 +1,4 @@
-%DefiniÁ„o de usu·rio
+%Defini√ß√£o de usu√°rio
 usuario(renata).
 usuario(maria).
 usuario(karina).
@@ -20,10 +20,10 @@ usuario(harley).
 usuario(oliver).
 usuario(dayane).
 
-%DefiniÁ„o de interesse
+%Defini√ß√£o de interesse
 interesse(comida).
 interesse(jogos).
-interesse(m˙sica).
+interesse(m√∫sica).
 interesse(livros).
 interesse(moda).
 interesse(ferramentas).
@@ -32,14 +32,14 @@ interesse(carros).
 interesse(casa).
 interesse(motos).
 
-%DefiniÁ„o de grupos
+%Defini√ß√£o de grupos
 grupo(starwars).
 grupo(vingadores).
 grupo(motorcycle).
 grupo(onepiece).
 grupo(mixtureBox).
 
-%DefiniÁ„o de seguidor
+%Defini√ß√£o de seguidor
 seguir(renata, carlos).
 seguir(renata, harley).
 seguir(renata, joao).
@@ -113,8 +113,10 @@ seguir(oliver, jose).
 seguir(dayane, amanda).
 seguir(dayane, maria).
 
-%REGRA: Amigo -  Dados os usu·rios A e B, quando A segue B e B segue A ent„o diz-se que A e B s„o amigos.
-amigos(A, B) :- seguir(A, B) , seguir(B, A).
+%REGRA: Amigo -  Dados os usu√°rios A e B, quando A segue B e B segue A ent√£o diz-se que A e B s√£o amigos.
+amigos(A, B) :-
+    seguir(A, B) , seguir(B, A).
+
 
 %Define interesses
 gosta(maria, flores).
@@ -126,7 +128,7 @@ gosta(renata, comida).
 gosta(renata, livros).
 gosta(renata, motos).
 
-gosta(karina, m˙sica).
+gosta(karina, m√∫sica).
 gosta(karina, flores).
 
 gosta(marina, carros).
@@ -149,7 +151,7 @@ gosta(luzia, moda).
 gosta(luzia, motos).
 
 gosta(joao, jogos).
-gosta(joao, m˙sica).
+gosta(joao, m√∫sica).
 gosta(joao, ferramentas).
 
 gosta(lucio, carros).
@@ -176,7 +178,7 @@ gosta(sonia, jogos).
 gosta(sonia, motos).
 
 gosta(tiago, carros).
-gosta(tiago, m˙sica).
+gosta(tiago, m√∫sica).
 
 gosta(harley, comida).
 gosta(harley, motos).
@@ -236,7 +238,7 @@ pertence(harley, vingadores).
 pertence(oliver, vingadores).
 pertence(dayane, vingadores).
 
-%DefiniÁıes de grupos que contÈm usuarios
+%Defini√ß√µes de grupos que cont√©m usuarios
 contem(vingadores, renata).
 contem(vingadores, maria).
 contem(vingadores, karina).
@@ -274,8 +276,35 @@ contem(motorcycle, edson).
 contem(motorcycle, renato).
 contem(motorcycle, tiago).
 
-% REGRA: interesses dos amigos - Dado o usu·rio C, quando C È amigo
-% de E, C gosta de D e E gosta de D ent„o diz-se que C e E s„o amigos e
+% REGRA: interesses dos amigos - Dado o usu√°rio C, quando C √© amigo
+% de E, C gosta de D e E gosta de D ent√£o diz-se que C e E s√£o amigos e
 % tem o mesmo interesse.
-interesses_amigos(C) :- amigo(C,E) :- gosta(C, D) , gosta(E, D).
+interesses_amigos(C,Y) :-
+    amigos(C,X),gosta(X, Y).
+
+% Consulta que retorna todos os amigos de um determinado usuario
+% que pertencem a um determinado grupo
+amigos_do_grupo(C,G,A) :-
+    amigos(C,A),pertence(A, G).
+
+% Crie uma consulta que, dado um grupo, retorne todos os
+% interesses de todos os usu√°rios daquele grupo.
+interesses_do_grupo(G,I):-
+    contem(G,X), gosta(X,I).
+
+%Solucao alternativa mostrando tamb√©m os usuarios do grupo e
+%seus respectivos interesses
+interesses_do_grupo_alternativa(G,X,I):-
+    contem(G,X), gosta(X,I).
+
+% (i) Crie uma consulta que indique para uma pessoa novos
+% interesses a partir das seguintes regras:
+% 1. os interesses dos amigos daquela pessoa que ela ainda
+% n√£o possui OU
+% 2. os interesses das pessoas que pertencem aos mesmos
+% grupos daquela pessoa e que ela ainda n√£o possui.
+
+novos_interesses(C,Y):-
+   amigos(C,X),gosta(X,Y),not(gosta(C,Y));
+   pertence(C,X),contem(X,U),gosta(U,Y),not(gosta(C,Y)).
 
