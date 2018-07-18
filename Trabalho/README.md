@@ -17,6 +17,8 @@
 #### (d) Incremente a regra proxima_jogada para levar em conta (e descartar) as posições que já estão ocupadas com outras peças.
 #### (e) Adicione a regra proxima_jogada_ataque que, quando utilizada em consulta, pode retornar as posições para ataque válidas. A regra deve levar em conta o movimento de ataque e as peças da cor adversária que estão em tais posições. A consulta poderá ser feita como no exemplo: proxima_jogada_ataque(torre, 1, branca, X, Y). Nesse caso, só serão retornadas as possibilidades de ataque(posições que essa peça pode se movimentar e que possuem peças inimigas).
 
+* [Resposta Questão1](https://github.com/MarconiBraga/PrologLP-2018/blob/master/Trabalho/questao1.pl)
+
 ## 2. Suponha que em uma rede social existem os conceitos: usuário, interesse e grupo. Crie fatos e regras para:
 
 #### (a) Definir 20 usuários, 10 interesses e 5 grupos.
